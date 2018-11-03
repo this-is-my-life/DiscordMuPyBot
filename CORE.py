@@ -2,7 +2,7 @@ import system
 import discord
 from discord.ext import commands
 
-muto = System.getenv("muto")
+muto = system.getenv("muto")
 
 mu = commnads.Bot(command_prefix = 'mp!')
 

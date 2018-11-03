@@ -1,10 +1,10 @@
-import system
+import os
 import discord
 from discord.ext import commands
 
-muto = system.getenv("muto")
+muto = os.getenv("muto")
 
-mu = commnads.Bot(command_prefix = 'mp!')
+mu = commands.Bot(command_prefix = 'mp!')
 
 @mu.event
 async def on_ready():

@@ -34,8 +34,29 @@ mu.run(muto)
 # Bot Readying___________________________________
 @mu.event
 async def on_ready():
-	print('MuPy is Here');
+	print("-----------------------------------------------------------\n\n	μBot is Running Correctly! \n\nInput Log:")
+
+# Bot Logging____________________________________
+@mu.event
+async def on_message(input):
+
+	# Input Checker
+	iuser = input.author
+	i = input.content
+	ichannel = input.channel
+
+	# Logging
+	print('{}/{}> {}'.format(ichannel, iuser, i))
 
 # Bot Commanding_________________________________
+@mu.command()
+async def ping():
+	await mu.say('Pong!')
 
-	
+
+@mu.event
+async def on_message_delete(input):
+	iuser = input.author
+	i = input.content
+	ichannel = input.channel
+	await client.send_message(channel, '\'{}\' Said \'{}\'\nBut, Deleted.'.format(iuser, i))

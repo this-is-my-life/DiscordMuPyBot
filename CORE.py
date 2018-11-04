@@ -21,7 +21,7 @@ from discord.ext import commands
 # Get Token______________________________________
 	
 # Get Token From Enviroment Variable or Text
-muto = os.getenv("muto") || ' Token Here. Or Get Environment Variable '
+muto = os.getenv("muto") or ' Token Here. Or Get Environment Variable '
 
 # Bot Login______________________________________
 
@@ -35,5 +35,7 @@ mu.run(muto)
 @mu.event
 async def on_ready():
 	print('MuPy is Here');
+
+# Bot Commanding_________________________________
 
 	

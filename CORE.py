@@ -36,7 +36,7 @@ mu.run(muto)
 async def on_ready():
 	print("-----------------------------------------------------------\n\n	μBot is Running Correctly! \n\nInput Log:")
 
-# Bot Logging____________________________________
+# Bot Commanding_________________________________
 @mu.event
 async def on_message(input):
 
@@ -48,11 +48,9 @@ async def on_message(input):
 	# Logging
 	print('{}/{}> {}'.format(ichannel, iuser, i))
 
-# Bot Commanding_________________________________
-@mu.command()
-async def ping():
-	await mu.say('Pong!')
-
+	# Check Command
+	if i.startswith("mp!ping"):
+		await mu.send_message(ichannel, 'Pong!')
 
 @mu.event
 async def on_message_delete(input):

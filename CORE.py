@@ -18,6 +18,12 @@ import discord
 # Discord API Commands Import
 from discord.ext import commands
 
+# Async Io Import
+import asyncio
+
+# Cycle Import
+from itertools import cycle
+
 # Get Token______________________________________
 	
 # Get Token From Enviroment Variable or Text
@@ -27,6 +33,17 @@ muto = os.getenv("muto") or ' Token Here. Or Get Environment Variable '
 
 # Get Bot Client
 mu = commands.Bot(command_prefix = 'mp!')
+
+# Bot Status Cycle
+status = ['제작: PMH Studio / PMH', 'Python 3.6 & Discord.py기반', 'MuPy! (MuBot Python Version)', '꼬우면 PMH에게!']
+async def change_status():
+	await mu.wait_until_ready()
+	msgs = cycle(status)
+
+	while not mu.is_closed:
+		current_status = next(msgs)
+		await mu.change_presence(game=discord.Game(name=current_status))
+		await asyncio.sleep(3)
 
 # Bot Readying___________________________________
 @mu.event
@@ -87,10 +104,6 @@ async def on_message(input):
 				await mu.delete_messages(deletes)
 				await mu.send_message(ichannel, '삭제 완료!')
 
-		if i.startswith('뮤파!니코니코니'):
-			role = discord.utils.get(iuser.server.roles, name='파딱')
-			await mu.add_roles(iuser, role)
-
 ''' When Message Deleted___________________________
 @mu.event
 async def on_message_delete(input):
@@ -99,6 +112,9 @@ async def on_message_delete(input):
 	ichannel = input.channel
 	await mu.send_message(ichannel, '\'{}\' Said \'{}\'\nBut, Deleted.'.format(iuser, i))
 '''
+
+# Status Cycle Loop
+mu.loop.create_task(change_status())
 
 # Bot Login with Token
 mu.run(muto)

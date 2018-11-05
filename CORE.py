@@ -88,7 +88,7 @@ async def on_message(input):
 				await mu.send_message(ichannel, '삭제 완료!')
 
 		if i.startswith('뮤파!니코니코니'):
-			role = discord.utils.get(iuser.server.roles, name='철혈')
+			role = discord.utils.get(iuser.server.roles, name='파딱')
 			await mu.add_roles(iuser, role)
 
 ''' When Message Deleted___________________________

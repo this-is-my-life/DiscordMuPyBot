@@ -47,17 +47,17 @@ async def on_message(input):
 	print('{}/{}> {}'.format(ichannel, iuser, i))
 
 	if i.startswith('mp!ping') or i.startswith('mp!p'):
-		await mu.send_message(channel, 'Pong')
+		await mu.send_message(ichannel, 'Pong')
 
 	if i.startswith('뮤파!핑') or i.startswith('뮤파!핑크'):
-		await mu.send_message(channel, '퐁!')
+		await mu.send_message(ichannel, '퐁!')
 
 	if i.startswith('mp!say') or i.startswith('mp!s') or i.startswith('뮤파!말') or i.startswith('뮤파!말해줘'):
 		output = ''
 		for word in itab[1:]:
 			output += word
 			output += ' '
-		await mu.send_message(channel, output)
+		await mu.send_message(ichannel, output)
 
 # When Message Deleted___________________________
 @mu.event
@@ -65,7 +65,7 @@ async def on_message_delete(input):
 	iuser = input.author
 	i = input.content
 	ichannel = input.channel
-	await client.send_message(channel, '\'{}\' Said \'{}\'\nBut, Deleted.'.format(iuser, i))
+	await client.send_message(ichannel, '\'{}\' Said \'{}\'\nBut, Deleted.'.format(iuser, i))
 
 # Bot Login with Token
 mu.run(muto)

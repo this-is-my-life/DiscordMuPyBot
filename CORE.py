@@ -61,8 +61,10 @@ async def on_message(input):
 				output += ' '
 			await mu.send_message(ichannel, output)
 
-		if i.startswith('mp!delete') or i.startswith('mp!d'):
-			amount = 100
+		if i.startswith('mp!delete') or i.startswith('mp!d') or i.startswith('뮤파!삭') or i.startswith('뮤파!삭제'):
+			amount = 99
+			for a in itab[1:]:
+				amount = a
 			deletes = []
 			async for input in mu.logs_from(ichannel, limit=int(amount) + 1):
 				deletes.append(input)

@@ -26,7 +26,7 @@ muto = os.getenv("muto") or ' Token Here. Or Get Environment Variable '
 # Bot Login______________________________________
 
 # Get Bot Client
-mu = commands.Bot()
+mu = commands.Bot(command_prefix = 'mp!')
 
 # Bot Readying___________________________________
 @mu.event

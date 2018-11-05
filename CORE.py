@@ -35,23 +35,24 @@ async def on_ready():
 
 # Bot Commanding__________________________________
 @mu.event
-async def on_message(msg):
+async def on_message(input):
 
-	# msg Checker
-	iuser = msg.author
-	itab = msg.content.split()
-	ichannel = msg.channel
+	# Input Checker
+	iuser = input.author
+	i = input.content
+	itab = i.split()
+	ichannel = input.channel
 
 	# Logging
-	print('{}/{}> {}'.format(ichannel, iuser, msg.content))
+	print('{}/{}> {}'.format(ichannel, iuser, i))
 
-	if msg.content.startwith('mp!ping') or msg.content.startwith('mp!p'):
+	if i.startswith('mp!ping') or i.startswith('mp!p'):
 		await mu.send_message(channel, 'Pong')
 
-	if msg.content.startwith('뮤파!핑') or msg.content.startwith('뮤파!핑크'):
+	if i.startswith('뮤파!핑') or i.startswith('뮤파!핑크'):
 		await mu.send_message(channel, '퐁!')
 
-	if msg.content.startwith('mp!say') or msg.content.startwith('mp!s') or msg.content.startwith('뮤파!말') or msg.content.startwith('뮤파!말해줘'):
+	if i.startswith('mp!say') or i.startswith('mp!s') or i.startswith('뮤파!말') or i.startswith('뮤파!말해줘'):
 		output = ''
 		for word in itab[1:]:
 			output += word
@@ -60,10 +61,11 @@ async def on_message(msg):
 
 # When Message Deleted___________________________
 @mu.event
-async def on_message_delete(msg):
-	iuser = msg.author
-	ichannel = msg.channel
-	await mu.send_message(channel, '\'{}\' Said \'{}\'\nBut, Deleted.'.format(iuser, msg.content))
+async def on_message_delete(input):
+	iuser = input.author
+	i = input.content
+	ichannel = input.channel
+	await client.send_message(channel, '\'{}\' Said \'{}\'\nBut, Deleted.'.format(iuser, i))
 
 # Bot Login with Token
 mu.run(muto)

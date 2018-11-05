@@ -69,16 +69,17 @@ async def on_message(input):
 			async for input in mu.logs_from(ichannel, limit=int(amount) + 1):
 				deletes.append(input)
 			await mu.delete_messages(deletes)
-			await mu.say('Deleted!')
+			await mu.send_message(ichannel, 'Deleted!')
 
 
-# When Message Deleted___________________________
+''' When Message Deleted___________________________
 @mu.event
 async def on_message_delete(input):
 	iuser = input.author
 	i = input.content
 	ichannel = input.channel
-	await client.send_message(ichannel, '\'{}\' Said \'{}\'\nBut, Deleted.'.format(iuser, i))
+	await mu.send_message(ichannel, '\'{}\' Said \'{}\'\nBut, Deleted.'.format(iuser, i))
+'''
 
 # Bot Login with Token
 mu.run(muto)

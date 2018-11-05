@@ -42,22 +42,33 @@ async def on_message(input):
 	i = input.content
 	itab = i.split()
 	ichannel = input.channel
+	
+	if i.startswith('mp!') or i.startswith('뮤파!'):
 
-	# Logging
-	print('{}/{}> {}'.format(ichannel, iuser, i))
+		# Logging
+		print('{}/{}> {}'.format(ichannel, iuser, i))
 
-	if i.startswith('mp!ping') or i.startswith('mp!p'):
-		await mu.send_message(ichannel, 'Pong')
+		if i.startswith('mp!ping') or i.startswith('mp!p'):
+			await mu.send_message(ichannel, 'Pong')
 
-	if i.startswith('뮤파!핑') or i.startswith('뮤파!핑크'):
-		await mu.send_message(ichannel, '퐁!')
+		if i.startswith('뮤파!핑') or i.startswith('뮤파!핑크'):
+			await mu.send_message(ichannel, '퐁!')
 
-	if i.startswith('mp!say') or i.startswith('mp!s') or i.startswith('뮤파!말') or i.startswith('뮤파!말해줘'):
-		output = ''
-		for word in itab[1:]:
-			output += word
-			output += ' '
-		await mu.send_message(ichannel, output)
+		if i.startswith('mp!say') or i.startswith('mp!s') or i.startswith('뮤파!말') or i.startswith('뮤파!말해줘'):
+			output = ''
+			for word in itab[1:]:
+				output += word
+				output += ' '
+			await mu.send_message(ichannel, output)
+
+		if i.startswith('mp!delete') or i.startswith('mp!d'):
+			amount = 100
+			deletes = []
+			async for input in mu.logs_from(ichannel, limit=int(amount) + 1):
+				deletes.append(input)
+			await mu.delete_messages(deletes)
+			await mu.say('Deleted!')
+
 
 # When Message Deleted___________________________
 @mu.event

@@ -59,6 +59,7 @@ async def on_message(input):
 	i = input.content
 	itab = i.split()
 	ichannel = input.channel
+	iserver = input.server
 	
 	if i.startswith('mp!') or i.startswith('뮤파!'):
 
@@ -103,6 +104,14 @@ async def on_message(input):
 					deletes.append(input)
 				await mu.delete_messages(deletes)
 				await mu.send_message(ichannel, '삭제 완료!')
+
+		if i.startswith('뮤파!닉'):
+			output = ''
+			for word in itab[1:]:
+				output += word
+				output += ' '
+			await mu.change_nickname(iserver.me, output)
+
 
 ''' When Message Deleted___________________________
 @mu.event

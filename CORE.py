@@ -46,6 +46,8 @@ async def on_message(input):
 	print('{}/{}> {}'.format(ichannel, iuser, i))
 
 # Bot Commanding__________________________________
+        await mu.process_commands(input)
+        
 @mu.command()
 async def ping():
         await mu.say('Pong!')

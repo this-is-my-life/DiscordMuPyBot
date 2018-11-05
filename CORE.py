@@ -46,12 +46,21 @@ async def on_message(input):
 	print('{}/{}> {}'.format(ichannel, iuser, i))
 
 # Bot Commanding__________________________________
-        await mu.process_commands(input)
+    await mu.process_commands(input)
         
 @mu.command()
 async def ping():
         await mu.say('Pong!')
 
+@mu.command
+async def say(*args):
+	output = ''
+	for word in args:
+		output += word
+		output += ' '
+	await mu.say(output)
+
+# When Message Deleted___________________________
 @mu.event
 async def on_message_delete(input):
 	iuser = input.author

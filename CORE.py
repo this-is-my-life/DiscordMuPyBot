@@ -28,9 +28,6 @@ muto = os.getenv("muto") or ' Token Here. Or Get Environment Variable '
 # Get Bot Client
 mu = commands.Bot(command_prefix = 'mp!')
 
-# Bot Login with Token
-mu.run(muto)
-
 # Bot Readying___________________________________
 @mu.event
 async def on_ready():
@@ -59,3 +56,6 @@ async def on_message_delete(input):
 	i = input.content
 	ichannel = input.channel
 	await client.send_message(channel, '\'{}\' Said \'{}\'\nBut, Deleted.'.format(iuser, i))
+
+# Bot Login with Token
+mu.run(muto)

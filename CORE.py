@@ -35,7 +35,7 @@ muto = os.getenv("muto") or ' Token Here. Or Get Environment Variable '
 mu = commands.Bot(command_prefix = 'mp!')
 
 # Bot Status Cycle
-status = ['제작: PMH Studio / PMH', 'Python 3.6 & Discord.py기반', 'MuPy! (MuBot Python Version)', '꼬우면 PMH에게!']
+status = ['제작: PMH Studio / PMH', 'Python 3.6 & Discord.py기반', 'MuPy! (MuBot Python Version)', '일단 테스트중! 띠꺼우면 PMH에게!', '오프은 소스으 (깃헙참고)', 'github.com/PMHStudio/DiscordMuPyBot', 'mubotapi.dothome.co.kr/', 'pmhstudio.co.nf']
 async def change_status():
 	await mu.wait_until_ready()
 	msgs = cycle(status)
@@ -43,7 +43,7 @@ async def change_status():
 	while not mu.is_closed:
 		current_status = next(msgs)
 		await mu.change_presence(game=discord.Game(name=current_status))
-		await asyncio.sleep(3)
+		await asyncio.sleep(1)
 
 # Bot Readying___________________________________
 @mu.event

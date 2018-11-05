@@ -61,15 +61,32 @@ async def on_message(input):
 				output += ' '
 			await mu.send_message(ichannel, output)
 
-		if i.startswith('mp!delete') or i.startswith('mp!d') or i.startswith('뮤파!삭') or i.startswith('뮤파!삭제'):
+		if i.startswith('mp!delete') or i.startswith('mp!d'):
 			amount = 99
 			for a in itab[1:]:
 				amount = a
-			deletes = []
-			async for input in mu.logs_from(ichannel, limit=int(amount) + 1):
-				deletes.append(input)
-			await mu.delete_messages(deletes)
-			await mu.send_message(ichannel, 'Deleted!')
+			if amount > 99:
+				await mu.send_message(ichannel, 'MuPy Can Delete Less than 99 Message!')
+			else:
+				deletes = []
+				async for input in mu.logs_from(ichannel, limit=int(amount) + 1):
+					deletes.append(input)
+				await mu.delete_messages(deletes)
+				await mu.send_message(ichannel, 'Deleted!')
+
+		if i.startswith('뮤파!삭') or i.startswith('뮤파!삭제'):
+			amount = 99
+			for a in itab[1:]:
+				amount = a
+			if amount > 99:
+				await mu.send_message(ichannel, '뮤파이는 99개의 메세지까지 지울 수 있다뮤!')
+			else:
+				deletes = []
+				async for input in mu.logs_from(ichannel, limit=int(amount) + 1):
+					deletes.append(input)
+				await mu.delete_messages(deletes)
+				await mu.send_message(ichannel, '삭제 완료!')
+
 
 
 ''' When Message Deleted___________________________

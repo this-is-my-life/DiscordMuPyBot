@@ -82,7 +82,7 @@ async def on_message(input):
 			amount = 99
 			for a in itab[1:]:
 				amount = a
-			if amount > 99:
+			if int(amount) > 99:
 				await mu.send_message(ichannel, 'MuPy Can Delete Less than 99 Message!')
 			else:
 				deletes = []
@@ -95,7 +95,7 @@ async def on_message(input):
 			amount = 99
 			for a in itab[1:]:
 				amount = a
-			if amount > 99:
+			if int(amount) > 99:
 				await mu.send_message(ichannel, '뮤파이는 99개의 메세지까지 지울 수 있다뮤!')
 			else:
 				deletes = []

@@ -26,39 +26,38 @@ muto = os.getenv("muto") or ' Token Here. Or Get Environment Variable '
 # Bot Login______________________________________
 
 # Get Bot Client
-mu = commands.Bot(command_prefix = 'mp!')
+mu = commands.Bot()
 
 # Bot Readying___________________________________
 @mu.event
 async def on_ready():
 	print("-----------------------------------------------------------\n\n	μBot is Running Correctly! \n\nInput Log:")
 
-# Bot Logging_____________________________________
+# Bot Commanding__________________________________
 @mu.event
 async def on_message(input):
 
 	# Input Checker
 	iuser = input.author
 	i = input.content
+	itab = i.split()
 	ichannel = input.channel
 
 	# Logging
 	print('{}/{}> {}'.format(ichannel, iuser, i))
 
-# Bot Commanding__________________________________
-	await mu.process_commands(input)
+	if i.startwith('mp!ping') or i.startwith('mp!p'):
+		await mu.send_message(channel, 'Pong')
 
-@mu.command()
-async def ping():
-	await mu.say('Pong!')
+	if i.startwith('뮤파!핑') or i.startwith('뮤파!핑크'):
+		await mu.send_message(channel, '퐁!')
 
-@mu.command
-async def say(*args):
-	output = ''
-	for word in args:
-		output += word
-		output += ' '
-	await mu.say(output)
+	if i.startwith('mp!say') or i.startwith('mp!s') or i.startwith('뮤파!말') or i.startwith('뮤파!말해줘'):
+		output = ''
+		for word in itab[1:]:
+			output += word
+			output += ' '
+		await mu.send_message(channel, output)
 
 # When Message Deleted___________________________
 @mu.event

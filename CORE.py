@@ -43,7 +43,7 @@ async def change_status():
 	while not mu.is_closed:
 		current_status = next(msgs)
 		await mu.change_presence(game=discord.Game(name=current_status))
-		await asyncio.sleep(1)
+		await asyncio.sleep(2)
 
 # Bot Readying___________________________________
 @mu.event

@@ -101,7 +101,7 @@ async def on_message(input):
 
 		if i.startswith('mu!emb'):
 			emb = discord.Embed(
-				title = "이예!"
+				title = "이예!",
 				colour = discord.Colour.gold()
 			)
 		

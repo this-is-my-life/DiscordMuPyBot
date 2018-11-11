@@ -99,6 +99,16 @@ async def on_message(input):
 				output += ' '
 			await mu.change_nickname(iserver.me, output)
 
+		if i.startswith('mu!emb'):
+			emb = discord.Embed(
+				title = "이예!"
+				colour = discord.Colour.gold()
+			)
+		
+		emb.set_author(name=input.author, icon_url=input.avatar_url)
+		emb.set_thumbnail(url=input.server.icon_url)
+		emb.add_field(name="이 메시지가 뜬다면 당신은 잘한겁니다", value="이예!")
+
 
 ''' When Message Deleted___________________________
 @mu.event

@@ -50,6 +50,9 @@ async def change_status():
 async def on_ready():
 	print("-----------------------------------------------------------\n\n	μBot is Running Correctly! \n\nInput Log:")
 
+# Bot Cooldown___________________________________
+@commands.cooldown(1, 30, commands.BucketType.user)
+
 # Bot Commanding__________________________________
 @mu.event
 async def on_message(input):
@@ -61,7 +64,7 @@ async def on_message(input):
 	ichannel = input.channel
 	iserver = input.server
 	
-	if i.startswith('mu!') or i.startswith('뮤!'):
+	if i.startswith('mu!'):
 
 		# Logging
 		print('{}/{}> {}'.format(ichannel, iuser, i))
@@ -79,7 +82,7 @@ async def on_message(input):
 				await mu.delete_messages(deletes)
 				await mu.send_message(ichannel, 'Deleted {} Messages By \'{}\'!'.format(amount, iuser))
 
-		if i.startswith('뮤!삭') or i.startswith('뮤!삭제'):
+		if i.startswith('mu!삭'):
 			amount = 1
 			for a in itab[1:]:
 				amount = a
@@ -92,7 +95,7 @@ async def on_message(input):
 				await mu.delete_messages(deletes)
 				await mu.send_message(ichannel, '\'{}\'의 요청으로\n{}개의 메시지 삭제 완료!'.format(iuser, amount))
 
-		if i.startswith('뮤!닉'):
+		if i.startswith('mu!닉') or i.startswith('mu!nick'):
 			output = ''
 			for word in itab[1:]:
 				output += word
@@ -104,21 +107,11 @@ async def on_message(input):
 				title = "이예!",
 				colour = discord.Colour.gold()
 			)
-		
-		emb.set_author(name=input.author, icon_url=input.author.avatar_url)
-		emb.set_thumbnail(url=input.server.icon_url)
-		emb.add_field(name="이 메시지가 뜬다면 당신은 잘한겁니다", value="이예!")
-		await mu.say(embed=emb)
 
-
-''' When Message Deleted___________________________
-@mu.event
-async def on_message_delete(input):
-	iuser = input.author
-	i = input.content
-	ichannel = input.channel
-	await mu.send_message(ichannel, '\'{}\' Said \'{}\'\nBut, Deleted.'.format(iuser, i))
-'''
+			emb.set_author(name=input.author, icon_url=input.author.avatar_url)
+			emb.set_thumbnail(url=input.server.icon_url)
+			emb.add_field(name="이 메시지가 뜬다면 당신은 잘한겁니다", value="이예!")
+			await mu.say(embed=emb)
 
 # Status Cycle Loop
 mu.loop.create_task(change_status())

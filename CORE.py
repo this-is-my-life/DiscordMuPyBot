@@ -84,13 +84,13 @@ async def on_message(input):
 			for a in itab[1:]:
 				amount = a
 			if int(amount) > 99:
-				await mu.send_message(ichannel, '뮤는 99개의 메세지까지 지울 수 있다뮤!')
+				await mu.send_message(ichannel, '뮤는 99개의 메시지까지 지울 수 있다뮤!')
 			else:
 				deletes = []
 				async for input in mu.logs_from(ichannel, limit=int(amount) + 1):
 					deletes.append(input)
 				await mu.delete_messages(deletes)
-				await mu.send_message(ichannel, '\'{}\'의 요청으로\n{}개의 메세지 삭제 완료!'.format(iuser, amount))
+				await mu.send_message(ichannel, '\'{}\'의 요청으로\n{}개의 메시지 삭제 완료!'.format(iuser, amount))
 
 		if i.startswith('뮤!닉'):
 			output = ''

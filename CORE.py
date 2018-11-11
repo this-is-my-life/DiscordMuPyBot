@@ -105,7 +105,7 @@ async def on_message(input):
 				colour = discord.Colour.gold()
 			)
 		
-		emb.set_author(name=input.author, icon_url=input.avatar_url)
+		emb.set_author(name=input.author, icon_url=input.author.avatar_url)
 		emb.set_thumbnail(url=input.server.icon_url)
 		emb.add_field(name="이 메시지가 뜬다면 당신은 잘한겁니다", value="이예!")
 

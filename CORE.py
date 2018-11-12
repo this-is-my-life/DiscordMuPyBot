@@ -1,12 +1,3 @@
-'''
-	μPy! v6.0 Core. 
-	---------------------
-	PMH Studio / Proj- μBot | Smart & Cute Discord Bot_Mu~☆ 
-	Copyright (c) 2018. PMH Studio / PMH. (kok4575@gmail.com) MIT Licensed.
-	
-	* Requests Node.js & Discord.js
-'''
-
 # Basic Imports__________________________________
 
 # Get Environment Variable System Import
@@ -55,14 +46,14 @@ async def on_ready():
 
 # Bot Commanding__________________________________
 @mu.event
-async def on_message(input):
+async def on_message(imsg):
 
 	# Input Checker
-	iuser = input.author
-	i = input.content
+	iuser = imsg.author
+	i = imsg.content
 	itab = i.split()
-	ichannel = input.channel
-	iserver = input.server
+	ichannel = imsg.channel
+	iserver = imsg.server
 	
 	if i.startswith('mu!'):
 
@@ -77,8 +68,8 @@ async def on_message(input):
 				await mu.send_message(ichannel, 'Mu Can Delete Less than 99 Message!')
 			else:
 				deletes = []
-				async for input in mu.logs_from(ichannel, limit=int(amount) + 1):
-					deletes.append(input)
+				async for imsg in mu.logs_from(ichannel, limit=int(amount) + 1):
+					deletes.append(imsg)
 				await mu.delete_messages(deletes)
 				await mu.send_message(ichannel, 'Deleted {} Messages By \'{}\'!'.format(amount, iuser))
 
@@ -90,8 +81,8 @@ async def on_message(input):
 				await mu.send_message(ichannel, '뮤는 99개의 메시지까지 지울 수 있다뮤!')
 			else:
 				deletes = []
-				async for input in mu.logs_from(ichannel, limit=int(amount) + 1):
-					deletes.append(input)
+				async for imsg in mu.logs_from(ichannel, limit=int(amount) + 1):
+					deletes.append(imsg)
 				await mu.delete_messages(deletes)
 				await mu.send_message(ichannel, '\'{}\'의 요청으로\n{}개의 메시지 삭제 완료!'.format(iuser, amount))
 
@@ -108,8 +99,8 @@ async def on_message(input):
 				colour = discord.Colour.gold()
 			)
 
-			emb.set_author(name=input.author, icon_url=input.author.avatar_url)
-			emb.set_thumbnail(url=input.server.icon_url)
+			emb.set_author(name=imsg.author, icon_url=imsg.author.avatar_url)
+			emb.set_thumbnail(url=imsg.server.icon_url)
 			emb.add_field(name="이 메시지가 뜬다면 당신은 잘한겁니다", value="이예!")
 			await mu.say(embed=emb)
 

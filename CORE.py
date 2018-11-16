@@ -92,17 +92,8 @@ async def on_message(imsg):
 				output += word
 				output += ' '
 			await mu.change_nickname(iserver.me, output)
+			await mu.send_message(ichannel, '\'{}\'의 요청으로\n\'{}\'로 닉변완료!'.format(iuser, output))
 
-		if i.startswith('mu!emb'):
-			emb = discord.Embed(
-				title = "이예!",
-				colour = discord.Colour.gold()
-			)
-
-			emb.set_author(name=imsg.author, icon_url=imsg.author.avatar_url)
-			emb.set_thumbnail(url=imsg.server.icon_url)
-			emb.add_field(name="이 메시지가 뜬다면 당신은 잘한겁니다", value="이예!")
-			await mu.say(embed=emb)
 
 # Status Cycle Loop
 mu.loop.create_task(change_status())

@@ -23,7 +23,7 @@ muto = os.getenv("muto") or ' Token Here. Or Get Environment Variable '
 # Bot Login______________________________________
 
 # Get Bot Client
-mu = commands.Bot(command_prefix = 'mu!')
+mu = commands.Bot(command_prefix = 'mp!')
 
 # Bot Status Cycle
 status = ['mu!도움 | 한쿸어 지원!', 'Type mu!help to HELP', 'Discord.js & Discord.py', 'Python + Node.js Version', '띠꺼우면 PMH Studio / PMH#2454', 'Open Source', 'github.com/PMHStudio/', 'mubotapi.dothome.co.kr/', 'pmhstudio.co.nf/', 'Created By PMH Studio', ' AI탑제! | mu!(하고싶은말)']
@@ -55,12 +55,12 @@ async def on_message(imsg):
 	ichannel = imsg.channel
 	iserver = imsg.server
 	
-	if i.startswith('mu!'):
+	if i.startswith('mp!'):
 
 		# Logging
 		print('{}/{}> {}'.format(ichannel, iuser, i))
 
-		if i.startswith('mu!delete') or i.startswith('mu!d'):
+		if i.startswith('mp!delete') or i.startswith('mp!d'):
 			amount = 1
 			for a in itab[1:]:
 				amount = a
@@ -73,7 +73,7 @@ async def on_message(imsg):
 				await mu.delete_messages(deletes)
 				await mu.send_message(ichannel, 'Deleted {} Messages By \'{}\'!'.format(amount, iuser))
 
-		if i.startswith('mu!삭'):
+		if i.startswith('mp!삭'):
 			amount = 1
 			for a in itab[1:]:
 				amount = a
@@ -86,7 +86,7 @@ async def on_message(imsg):
 				await mu.delete_messages(deletes)
 				await mu.send_message(ichannel, '\'{}\'의 요청으로\n{}개의 메시지 삭제 완료!'.format(iuser, amount))
 
-		if i.startswith('mu!닉') or i.startswith('mu!nick'):
+		if i.startswith('mp!닉') or i.startswith('mp!nick'):
 			output = ''
 			for word in itab[1:]:
 				output += word

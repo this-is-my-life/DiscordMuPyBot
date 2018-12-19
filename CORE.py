@@ -26,7 +26,7 @@ muto = os.getenv("muto") or ' Token Here. Or Get Environment Variable '
 mu = commands.Bot(command_prefix = 'mu!')
 
 # Bot Status Cycle
-status = ['mu!도움 | 한쿸어 지원!', 'Type mu!help to HELP', 'Discord.js & Discord.py', 'Python + Node.js Version', '띠꺼우면 PMH Studio / PMH#2454', 'Open Source', 'github.com/PMHStudio/', 'mubotapi.dothome.co.kr/', 'pmhstudio.co.nf/', 'Created By PMH Studio', ' AI탑제! | mu!(하고싶은말)']
+status = ['mu!도움 | 한쿸어 지원!', 'mu!토스트 | 빵굽자!' , 'Type mu!help to HELP', 'Discord.js & Discord.py', 'Discord.Net 시범운영중!', 'Python + Node.js + .net Version', 'mu!도박 | 도박 시스탬!', '띠꺼우면 PMH Studio / PMH#0001', 'Open Source', 'github.com/PMHStudio/', 'mubotapi.dothome.co.kr/', 'pmhstudio.co.nf/', 'Created By PMH Studio', ' AI탑제! | mu!(하고싶은말)']
 async def change_status():
 	await mu.wait_until_ready()
 	msgs = cycle(status)

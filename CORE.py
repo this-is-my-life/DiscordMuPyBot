@@ -54,7 +54,6 @@ async def on_message(imsg):
 	itab = i.split()
 	ichannel = imsg.channel
 	iserver = imsg.server
-	
 	if i.startswith('mu!'):
 
 		# Logging

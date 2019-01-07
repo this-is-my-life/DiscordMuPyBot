@@ -41,59 +41,6 @@ async def change_status():
 async def on_ready():
 	print("-----------------------------------------------------------\n\n	μBot is Running Correctly! \n\nInput Log:")
 
-# Bot Cooldown___________________________________
-@commands.cooldown(1, 30, commands.BucketType.user)
-
-# Bot Commanding__________________________________
-@mu.event
-async def on_message(imsg):
-
-	# Input Checker
-	iuser = imsg.author
-	i = imsg.content
-	itab = i.split()
-	ichannel = imsg.channel
-	iserver = imsg.server
-	if i.startswith('mu!'):
-
-		# Logging
-		print('{}/{}> {}'.format(ichannel, iuser, i))
-
-		if i.startswith('mu!delete') or i.startswith('mu!d'):
-			amount = 1
-			for a in itab[1:]:
-				amount = a
-			if int(amount) > 99:
-				await mu.send_message(ichannel, 'Mu Can Delete Less than 99 Message!')
-			else:
-				deletes = []
-				async for imsg in mu.logs_from(ichannel, limit=int(amount) + 1):
-					deletes.append(imsg)
-				await mu.delete_messages(deletes)
-				await mu.send_message(ichannel, 'Deleted {} Messages By \'{}\'!'.format(amount, iuser))
-
-		if i.startswith('mu!삭'):
-			amount = 1
-			for a in itab[1:]:
-				amount = a
-			if int(amount) > 99:
-				await mu.send_message(ichannel, '뮤는 99개의 메시지까지 지울 수 있다뮤!')
-			else:
-				deletes = []
-				async for imsg in mu.logs_from(ichannel, limit=int(amount) + 1):
-					deletes.append(imsg)
-				await mu.delete_messages(deletes)
-				await mu.send_message(ichannel, '\'{}\'의 요청으로\n{}개의 메시지 삭제 완료!'.format(iuser, amount))
-
-		if i.startswith('mu!닉') or i.startswith('mu!nick'):
-			output = ''
-			for word in itab[1:]:
-				output += word
-				output += ' '
-			await mu.change_nickname(iserver.me, output)
-			await mu.send_message(ichannel, '\'{}\'의 요청으로\n\'{}\'로 닉변완료!'.format(iuser, output))
-
-
 # Status Cycle Loop
 mu.loop.create_task(change_status())
 
